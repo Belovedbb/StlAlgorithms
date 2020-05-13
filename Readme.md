@@ -1,4 +1,4 @@
-# STL Compatible ArrayList aka stl like vector
+# STL Compatible ArrayList aka STL-like vector
 
 This is a simple project which builds a vector like container in accordance to STL standards therefore supporting varieties of c++ rich algorithms.
 

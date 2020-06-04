@@ -50,14 +50,15 @@ class arraylist{
         bool empty() const noexcept;
         reference at(size_type n);
         const_reference at(size_type n) const;
+        reference operator[](size_type n);
 
         /*Mutators */
         iterator insert(const_iterator position, const value_type& val);
         template<typename InputIterator>
         iterator insert(const const_iterator position, InputIterator first, InputIterator second);
-        reference operator[](size_type n);
         void clear() noexcept;
         iterator erase(const_iterator first, const_iterator last);
+        iterator erase(iterator first, iterator last);
         void push_back(value_type value);
 
         /*Iterators */

@@ -72,11 +72,19 @@ namespace a_list{
         }
         template<typename T, typename alloc>
         auto arraylist<T, alloc>::erase(const_iterator first, const_iterator last) -> iterator{
-            size_t initial_ = std::distance(begin(), first);
-            size_t end_ = std::distance(begin(), last);
+            size_t initial_ = std::distance(cbegin(), first);
+            size_t end_ = std::distance(cbegin(), last);
             impl.erase(initial_, end_);
             return last;
         }
+
+        template<typename T, typename alloc>
+        auto arraylist<T, alloc>::erase(iterator first, iterator last) -> iterator{
+            arraylist_const_iterator<T> first_const(first);
+            arraylist_const_iterator<T> last_const(last);
+            return this->erase(first_const, last_const);
+        }
+
         template<typename T, typename alloc>
         void arraylist<T, alloc>::push_back(value_type value){
             impl.insert(size(), value);
@@ -117,11 +125,11 @@ namespace a_list{
         }
         template<typename T, typename alloc>
         auto arraylist<T, alloc>::crbegin() const -> const_reverse_iterator{
-            return rbegin();
+            return std::make_reverse_iterator(cend());
         }
         template<typename T, typename alloc>
         auto arraylist<T, alloc>::crend() const -> const_reverse_iterator{
-            return rend();
+            return std::make_reverse_iterator(cbegin());
         }
 
         /*Allocator */

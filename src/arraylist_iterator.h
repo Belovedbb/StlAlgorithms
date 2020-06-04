@@ -44,7 +44,7 @@ namespace a_list{
                 if(other == *this){
                     return *this;
                 }
-                other.storage = storage;
+                storage = other.storage;
                 return *this;
             }
 
